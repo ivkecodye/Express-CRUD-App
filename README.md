@@ -1,6 +1,3 @@
-# Express-CRUD-App
-Back end CRUD app
-
 # Express + Prisma CRUD App
 
 A full-stack Node.js application with authentication, role-based access control,basic post and tasks CRUD functionality using:
