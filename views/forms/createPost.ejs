@@ -1,0 +1,24 @@
+<!-- views/forms/createPost.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Post</title>
+  </head>
+  <body>
+    <h1>Create Post</h1>
+    <form action="/create-post" method="POST">
+      <label for="title">Title</label>
+      <input type="text" name="title" required />
+
+      <label for="content">Content</label>
+      <textarea name="content" required></textarea>
+
+      <!-- Add the userId as a hidden input field -->
+      <input type="hidden" name="userId" value="1" />
+      <!-- Replace 1 with the dynamic userId -->
+
+      <button type="submit">Create Post</button>
+    </form>
+  </body>
+</html>

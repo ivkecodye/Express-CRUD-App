@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2rem;
+        background: #f8f9fa;
+      }
+      h1 {
+        color: #333;
+      }
+      section {
+        margin-bottom: 2rem;
+      }
+      ul {
+        padding-left: 1.5rem;
+      }
+      li {
+        margin-bottom: 0.5rem;
+      }
+      .card {
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📊 App Dashboard</h1>
+
+    <p>
+      <a href="/login">🔐 Login</a> | <a href="/create-user">➕ Add User</a> |
+      <a href="/create-post">📝 Add Post</a> |
+      <a href="/create-task">✅ Add Task</a>
+    </p>
+
+    <section>
+      <h2>👤 Users</h2>
+      <% users.forEach(user => { %>
+      <div class="card">
+        <strong>ID:</strong> <%= user.id %><br />
+        <strong>Email:</strong> <%= user.email %>
+      </div>
+      <% }) %> <% if (users.length === 0) { %>
+      <p>No users found.</p>
+      <% } %>
+    </section>
+
+    <section>
+      <h2>📝 Posts</h2>
+      <% posts.forEach(post => { %>
+      <div class="card">
+        <strong>Title:</strong> <%= post.title %><br />
+        <strong>Content:</strong> <%= post.content %><br />
+        <small>By user ID: <%= post.userId %></small>
+      </div>
+      <% }) %> <% if (posts.length === 0) { %>
+      <p>No posts found.</p>
+      <% } %>
+    </section>
+
+    <section>
+      <h2>✅ Tasks</h2>
+      <% tasks.forEach(task => { %>
+      <div class="card">
+        <strong>Title:</strong> <%= task.title %><br />
+        <strong>Description:</strong> <%= task.description %><br />
+        <% if (task.image) { %>
+        <img
+          src="/uploads/<%= task.image %>"
+          alt="Task image"
+          style="max-width: 150px; margin-top: 10px"
+        />
+        <% } %>
+        <small>By user ID: <%= task.userId %></small>
+      </div>
+      <% }) %> <% if (tasks.length === 0) { %>
+      <p>No tasks found.</p>
+      <% } %>
+    </section>
+  </body>
+</html>
