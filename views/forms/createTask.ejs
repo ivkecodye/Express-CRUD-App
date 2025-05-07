@@ -7,12 +7,24 @@
     <h1>✅ Create Task</h1>
     <form action="/create-task" method="POST" enctype="multipart/form-data">
       <label>Title: <input type="text" name="title" required /></label><br />
+
       <label
-        >Description: <textarea name="description" required></textarea></label
+        >Description:
+        <textarea name="description" required></textarea></label
       ><br />
-      <label>User ID: <input type="number" name="userId" required /></label
+
+      <label
+        >User ID:
+        <input type="number" name="userId" required /> </label
       ><br />
+
+      <label
+        >Status:
+        <input type="text" name="status" required /> </label
+      ><br />
+
       <label>Image: <input type="file" name="image" /></label><br />
+
       <button type="submit">Create</button>
     </form>
   </body>

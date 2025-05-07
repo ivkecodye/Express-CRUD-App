@@ -16,7 +16,7 @@ const createPost = async (req, res) => {
       data: {
         title,
         content,
-        user: { connect: { id: Number(userId) } }, // Connect the user with userId
+        user: { connect: { id: Number(userId) } },
       },
     });
     res.status(201).json(post);

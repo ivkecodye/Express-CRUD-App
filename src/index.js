@@ -31,7 +31,7 @@ app.get("/", async (req, res) => {
     const tasks = await prisma.task.findMany();
     const posts = await prisma.post.findMany();
 
-    res.render("index", { users, tasks, posts }); // Pass data to EJS
+    res.render("index", { users, tasks, posts });
   } catch (err) {
     res.status(500).send("Error fetching data");
   }
@@ -52,7 +52,7 @@ app.post("/create-user", async (req, res) => {
 });
 
 app.get("/create-post", (req, res) => {
-  res.render("forms/createPost"); // Test with just the file name, without the 'forms/' folder path
+  res.render("forms/createPost");
 });
 
 app.post("/create-post", async (req, res) => {
@@ -68,17 +68,25 @@ app.get("/create-task", (req, res) => {
 });
 
 app.post("/create-task", upload.single("image"), async (req, res) => {
-  const { title, description, userId } = req.body;
+  const { title, description, userId, status } = req.body;
   const image = req.file?.filename;
-  await prisma.task.create({
-    data: {
-      title,
-      description,
-      image,
-      userId: parseInt(userId),
-    },
-  });
-  res.redirect("/");
+
+  try {
+    await prisma.task.create({
+      data: {
+        title,
+        description,
+        status,
+        image,
+        userId: parseInt(userId),
+      },
+    });
+
+    res.redirect("/tasks");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error creating task");
+  }
 });
 
 app.post("/login", async (req, res) => {
